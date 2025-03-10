@@ -55,8 +55,8 @@ const StoreContextProvider:React.FC<StoreContextProviderProps> = ({children}) =>
         let totalAmount = 0;
         for(const item in cartItems){
             if(cartItems[item] > 0) {
-                let itemInfo = food_list.find((product)=>product._id===item);
-                totalAmount += itemInfo.price*cartItems[item];
+                let itemInfo = food_list.find((product)=>product._id===item) || {name:undefined,price:0};
+                if(itemInfo.name !== "undefined") totalAmount += itemInfo.price*cartItems[item];
             }
         }
         return totalAmount;
