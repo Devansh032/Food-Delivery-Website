@@ -57,7 +57,3 @@ A **full-stack food delivery web application** where users can browse menus, pla
 ✅ **Push Notifications** – Alerts for order confirmation & delivery updates  
 ✅ **AI-based Recommendations** – Suggests food based on user preferences  
 ✅ **Multi-restaurant Support** – Expand beyond a single menu  
-
----
-
-Let me know if you need any modifications! 🚀
