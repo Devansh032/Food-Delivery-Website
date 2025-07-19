@@ -7,7 +7,7 @@ import 'dotenv/config'
 import cartRouter from "./routes/cartRoute.js";
 import orderRouter from "./routes/orderRoute.js";
 import queryRouter from "./routes/queryRouter.js";
-
+import ch from "child_process";
 
 // app config
 const app = express();
@@ -24,7 +24,7 @@ connectDB();
 // api endpoints
 
 // pip install
-require('child_process').exec('pip install -r python_scripts/requirements.txt', (e, so, se) => console.log(so));
+ch.exec('pip install -r python_scripts/requirements.txt', (e, so, se) => console.log(so));
 
 
 app.use("/api/food",foodRouter);
