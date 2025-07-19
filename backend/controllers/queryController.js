@@ -14,11 +14,13 @@ const executeQuery = async (req, res) => {
         console.log("🔍 Query received:", query);
 
         const scriptPath = process.env.SCRIPT_PATH;
+        const filepath = path.resolve("python_scripts", "process.py");
+        console.log("📜 Script path:", filepath);
 
         const output_file = "./temp/output.json";
 
 
-        const process_query = spawn("python", [scriptPath, "process_query", query, JSON.stringify(filters), JSON.stringify(food_list)]);
+        const process_query = spawn("python", [filepath, "process_query", query, JSON.stringify(filters), JSON.stringify(food_list)]);
 
         process_query.on("close", async (code) => {
             console.log(`🐍 Python process exited with code ${code}`);
@@ -64,12 +66,15 @@ const searchQuery = async (req, res) => {
         const filters = req.body.filters || {};
         const food_list = req.body.food_list || [];
 
+        const filepath = path.resolve("python_scripts", "process.py");
+
+
         const scriptPath = process.env.SCRIPT_PATH;
         const output_file = "./temp/output.json"
 
 
         const pyProcess = spawn("python", [
-            scriptPath,
+            filepath,
             "process_search_query",
             query,
             JSON.stringify(filters),
