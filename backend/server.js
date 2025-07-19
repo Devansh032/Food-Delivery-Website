@@ -7,7 +7,6 @@ import 'dotenv/config'
 import cartRouter from "./routes/cartRoute.js";
 import orderRouter from "./routes/orderRoute.js";
 import queryRouter from "./routes/queryRouter.js";
-import ch from "child_process";
 
 
 // app config
@@ -20,39 +19,11 @@ app.use(express.json());
 app.use(cors());
 
 
-// api endpoints
-
-function execCmd(cmd) {
-ch.exec(cmd), (error, stdout, stderr) => {
-  console.log(stdout);
-  if (error) {
-    console.error('Execution error:', error);
-  }
-  if (stderr) {
-    console.error('stderr:', stderr);
-  }
-};
-}
-
-// `
-//   python3 -m venv venv && \
-//   source venv/Scripts/activate && \
-//   pip install -r python_scripts/requirements.txt
-// `
-
-console.log("creating venv");
-execCmd("python3 -m venv venv")
-
-console.log("activating venv");
-execCmd("source venv/Scripts/activate")
-
-console.log("installing");
-execCmd("pip install -r python_scripts/requirements.txt")
-
 
 connectDB();
 // db connection
 
+// api endpoints
 
 app.use("/api/food",foodRouter);
 app.use("/images",express.static("uploads"));
