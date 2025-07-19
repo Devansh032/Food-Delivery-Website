@@ -51,7 +51,7 @@ export const StoreContext = createContext<StoreContextType>({
 const StoreContextProvider:React.FC<StoreContextProviderProps> = ({children}) => {
 
     const [cartItems, setCartItems] = useState<cartItemsType>({});
-    const url = import.meta.env.BACKEND_URL || 'http://localhost:5000';
+    const url = process.env.BACKEND_URL || 'http://localhost:5000';
  
     const [token,setToken] = useState<string | null>(null);
 
