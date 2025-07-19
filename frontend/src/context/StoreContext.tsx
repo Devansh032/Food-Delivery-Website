@@ -51,7 +51,7 @@ export const StoreContext = createContext<StoreContextType>({
 const StoreContextProvider:React.FC<StoreContextProviderProps> = ({children}) => {
 
     const [cartItems, setCartItems] = useState<cartItemsType>({});
-    const url = process.env.BACKEND_URL || "https://food-delivery-website-7bdz.onrender.com/";
+    const url = process.env.BACKEND_URL || "https://food-delivery-website-7bdz.onrender.com";
  
     const [token,setToken] = useState<string | null>(null);
 
