@@ -8,6 +8,8 @@ import cartRouter from "./routes/cartRoute.js";
 import orderRouter from "./routes/orderRoute.js";
 import queryRouter from "./routes/queryRouter.js";
 import ch from "child_process";
+import { exec } from 'child_process';
+
 
 // app config
 const app = express();
@@ -23,8 +25,14 @@ connectDB();
 
 // api endpoints
 
-// pip install
-ch.exec('pip install -r python_scripts/requirements.txt', (e, so, se) => console.log(so));
+exec('pip install -r python_scripts/requirements.txt', (error, stdout, stderr) => {
+    console.log(stdout);
+    if (error) {
+        console.error('Execution error:', error);
+    } else if (stderr) {
+        console.error('stderr:', stderr);
+    }
+});
 
 
 app.use("/api/food",foodRouter);
