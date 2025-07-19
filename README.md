@@ -1,5 +1,5 @@
 # 🍽️ Food Delivery App  
-[Live Demo: food-delivery-website-2h3jwgtmw-devansh-singhals-projects.vercel.app](https://food-delivery-website-2h3jwgtmw-devansh-singhals-projects.vercel.app)
+[Live Demo: food-delivery-website-2h3jwgtmw-devansh-singhals-projects.vercel.app](food-delivery-website-six-amber.vercel.app)
 
 A **full-stack food delivery web application** where users can browse menus, place orders, and make secure payments using **Stripe**.  
 
