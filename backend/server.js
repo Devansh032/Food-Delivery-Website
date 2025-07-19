@@ -8,7 +8,6 @@ import cartRouter from "./routes/cartRoute.js";
 import orderRouter from "./routes/orderRoute.js";
 import queryRouter from "./routes/queryRouter.js";
 import ch from "child_process";
-import { exec } from 'child_process';
 
 
 // app config
@@ -20,19 +19,39 @@ const backendUrl = process.env.BACKEND_URL || 'http://localhost:5000';
 app.use(express.json());
 app.use(cors());
 
-// db connection
-connectDB();
 
 // api endpoints
 
-exec('pip install -r python_scripts/requirements.txt', (error, stdout, stderr) => {
-    console.log(stdout);
-    if (error) {
-        console.error('Execution error:', error);
-    } else if (stderr) {
-        console.error('stderr:', stderr);
-    }
-});
+function execCmd(cmd) {
+ch.exec(cmd), (error, stdout, stderr) => {
+  console.log(stdout);
+  if (error) {
+    console.error('Execution error:', error);
+  }
+  if (stderr) {
+    console.error('stderr:', stderr);
+  }
+};
+}
+
+// `
+//   python3 -m venv venv && \
+//   source venv/Scripts/activate && \
+//   pip install -r python_scripts/requirements.txt
+// `
+
+console.log("creating venv");
+execCmd("python3 -m venv venv")
+
+console.log("activating venv");
+execCmd("source venv/Scripts/activate")
+
+console.log("installing");
+execCmd("pip install -r python_scripts/requirements.txt")
+
+
+connectDB();
+// db connection
 
 
 app.use("/api/food",foodRouter);
