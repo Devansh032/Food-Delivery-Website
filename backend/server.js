@@ -23,6 +23,9 @@ connectDB();
 
 // api endpoints
 
+// pip install
+require('child_process').exec('pip install -r python_scripts/requirements.txt', (e, so, se) => console.log(so));
+
 
 app.use("/api/food",foodRouter);
 app.use("/images",express.static("uploads"));
